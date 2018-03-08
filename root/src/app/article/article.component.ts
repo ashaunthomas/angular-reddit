@@ -17,24 +17,29 @@ export class ArticleComponent implements OnInit {
     @HostBinging allows you to configure host element from WITHIN the
      component
   */
-  @HostBinding('attr.class') cssClass = "row";
-  article:Article;
+  @HostBinding('attr.class') cssClass = 'row';
+
+  article: Article;
 
   constructor() {
-    this.article = new Article("Angular 2","http://angular.io",10);
-
+    this.article = new Article();
+    this.article.title = 'Angular 2';
+    this.article.link = 'http://angular.io';
+    this.article.votes = 10;
   }
 
-  voteUp() {
+  voteUp(): boolean {
     this.article.votes++;
     return false;
   }
-  voteDown() {
+  voteDown(): boolean {
     this.article.votes--;
     return false;
    }
 
   ngOnInit() {
+
   }
+
 
 }
